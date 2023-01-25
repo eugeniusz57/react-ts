@@ -3,9 +3,18 @@ import { ITodo } from '../types/types';
 
 type TodoListProps = {
   todos: ITodo[];
+  onToggle(id: number): void;
+  onDelete(id: number): void;
 };
 
-export const TodoList: React.FC<TodoListProps> = ({ todos }) => {
+export const TodoList: React.FC<TodoListProps> = ({
+  todos,
+  onDelete,
+  onToggle,
+}) => {
+  if (todos.length === 0) {
+    return <p className="center">No event</p>;
+  }
   return (
     <ul>
       {todos.map(todo => {
@@ -17,9 +26,20 @@ export const TodoList: React.FC<TodoListProps> = ({ todos }) => {
         return (
           <li key={todo.id} className={classes.join(' ')}>
             <label>
-              <input type="checkbox" checked={todo.completed} />
+              <input
+                type="checkbox"
+                checked={todo.completed}
+                onChange={() => {
+                  return onToggle(todo.id);
+                }}
+              />
               <span>{todo.title}</span>
-              <i className="material-icons red-text">delete</i>
+              <i
+                className="material-icons red-text"
+                onClick={() => onDelete(todo.id)}
+              >
+                delete
+              </i>
             </label>
           </li>
         );
