@@ -13,7 +13,7 @@ const productData: IProduct = {
 };
 
 interface CreateProductProps {
-  onCreate: () => void;
+  onCreate: (product: IProduct) => void;
 }
 
 export function CreateProduct({ onCreate }: CreateProductProps) {
@@ -30,7 +30,7 @@ export function CreateProduct({ onCreate }: CreateProductProps) {
       'https://fakestoreapi.com/products',
       productData
     );
-    onCreate();
+    onCreate(res.data);
   };
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.currentTarget.value);
