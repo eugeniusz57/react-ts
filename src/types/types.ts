@@ -1,12 +1,5 @@
-export interface ITodo { 
-    title: string
-    id: number
-    completed: boolean
-}
-
-
 export interface IProduct { 
-    id: number;
+    id?: number;
     title: string;
     price: number;
     description: string;
