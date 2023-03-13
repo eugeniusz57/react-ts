@@ -37,7 +37,7 @@ export function CreateProduct({ onCreate }: CreateProductProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="text-center">
       <input
         value={value}
         onChange={handleChange}
